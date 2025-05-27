@@ -1,8 +1,8 @@
-import Button from '@mui/material/Button';
-import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
-import HomeIcon from '@mui/icons-material/Home';
-import { pink } from '@mui/material/colors';
-
+import Button from '@mui/material/Button'
+import ThreeDRotation from '@mui/icons-material/ThreeDRotation'
+import AccessAlarm from '@mui/icons-material/AccessAlarm'
+import HomeIcon from '@mui/icons-material/Home'
+import pink from '@mui/material/colors/pink'
 function App() {
   return (
     <>
