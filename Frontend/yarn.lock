@@ -776,6 +776,15 @@ for-each@^0.3.3, for-each@^0.3.5:
   dependencies:
     is-callable "^1.2.7"
 
+"frontend@file:":
+  version "0.0.0"
+  resolved "file:"
+  dependencies:
+    frontend "file:"
+    react "^18.2.0"
+    react-dom "^18.2.0"
+    trello-clone "file:"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
@@ -1735,7 +1744,7 @@ text-table@^0.2.0:
   version "0.0.0"
   resolved "file:"
   dependencies:
-    "" "file:"
+    frontend "file:"
     react "^18.2.0"
     react-dom "^18.2.0"
     trello-clone "file:"
