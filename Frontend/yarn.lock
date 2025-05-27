@@ -1735,6 +1735,7 @@ text-table@^0.2.0:
   version "0.0.0"
   resolved "file:"
   dependencies:
+    "" "file:"
     react "^18.2.0"
     react-dom "^18.2.0"
     trello-clone "file:"
