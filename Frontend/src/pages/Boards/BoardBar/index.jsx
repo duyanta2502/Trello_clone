@@ -11,12 +11,12 @@ import { Tooltip } from '@mui/material'
 import Button from '@mui/material/Button'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 const MENU_STYLE = {
-  color: 'primary.main',
-  bgcolor: 'white',
+  color: 'white',
+  bgcolor: 'transparent',
   border: 'none',
   paxdingX: '5px',
   borderRadius: '4px',
-  '& .MuiSvgIcon-root': { color: 'primary.main'
+  '.MuiSvgIcon-root': { color: 'white'
   },
   '&:hover': {
     bgcolor: 'primary.50'
@@ -34,8 +34,10 @@ function BoardBar() {
       gap: 2,
       paddingX: 2,
       overflowX: 'auto',
-      borderTop: '1px solid #00bfa5'
+      borderBottom: '1px solid white',
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2')
     }}>
+      {/* left BoardBar */}
       <Box sx = {{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
         <Chip sx={ MENU_STYLE } icon={<DashboardIcon />} label="TaDuyAn" clickable
         />
@@ -48,17 +50,27 @@ function BoardBar() {
         <Chip sx={ MENU_STYLE } icon={<FilterListIcon />} label="Filter" clickable
         />
       </Box>
-      <Box sx = {{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-        <Button variant="outlined"
-          startIcon = { <PersonAddIcon/> }> Invite
+      {/* right BoardBar */}
+      <Box sx = {{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Button
+          variant="outlined"
+          startIcon = { <PersonAddIcon/> }
+          sx = {{
+            color: 'white',
+            borderColor: 'white',
+            '&:hover': { borderColor: 'white' }
+          }}> Invite
         </Button>
-        <AvatarGroup max={5} sx={{
-          '& .MuiAvatar-root': {
-            width: 30,
-            height: 30,
-            fontSize: 16
-          }
-        }}>
+        <AvatarGroup max={5}
+          sx={{
+            gap:'10px',
+            '& .MuiAvatar-root': {
+              width: 30,
+              height: 30,
+              fontSize: 16,
+              border:'none'
+            }
+          }}>
           <Tooltip title="duyanta2502">
             <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
           </Tooltip>
