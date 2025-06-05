@@ -11,7 +11,7 @@ import SvgIcon from '@mui/material/SvgIcon'
 import { useState } from 'react'
 
 import { ReactComponent as trelloLogo } from '~/assets/mdi--trello.svg'
-import ModeSelect from '~/components/ModeSelect'
+import ModeSelect from '~/components/ModeSelect/ModeSelect'
 
 import Profiles from './Menus/Profiles'
 import Recent from './Menus/Recent'

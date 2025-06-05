@@ -35,7 +35,7 @@ function Profiles() {
           <Avatar
             sx={{ width: 36, height: 36 }}
             alt="Profile"
-            src='https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp'
+            src='https://c.tenor.com/U3-KZyDCW7sAAAAd/tenor.gif'
           />
         </IconButton>
       </Tooltip>
