@@ -3,11 +3,14 @@
 // MUI - Components
 import Box from '@mui/material/Box'
 
+import { mapOrder } from '~/utils/sorts'
+
 // components
 import ListColumn from './ListColumn/ListColumn'
 
 
-function BoardContent() {
+function BoardContent({ board }) {
+  const oderedColumns = mapOrder(board?.columns, board?.columnOrderIds, '_id')
   return (
     <Box sx = {{
       height: (theme) => theme.trello.boardContentHeight,
@@ -15,7 +18,7 @@ function BoardContent() {
       width: '100%',
       p: '10px 0'
     }}>
-      <ListColumn />
+      <ListColumn columns = {oderedColumns}/>
     </Box>
   )
 }

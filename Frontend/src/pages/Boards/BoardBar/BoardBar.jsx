@@ -10,6 +10,9 @@ import AvatarGroup from '@mui/material/AvatarGroup'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
+
+import { capitalizeFirstLetter } from '~/utils/formatters'
+
 const MENU_STYLE = {
   color: 'white',
   bgcolor: 'transparent',
@@ -22,7 +25,7 @@ const MENU_STYLE = {
     bgcolor: 'primary.50'
   }
 }
-function BoardBar() {
+function BoardBar({ board }) {
   return (
     <Box sx = {{
       // backgroundColor: 'primary.dark',
@@ -39,15 +42,35 @@ function BoardBar() {
     }}>
       {/* left BoardBar */}
       <Box sx = {{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-        <Chip sx={ MENU_STYLE } icon={<DashboardIcon />} label="TaDuyAn" clickable
+        <Chip
+          sx={ MENU_STYLE }
+          icon={<DashboardIcon />}
+          label={board?.title}
+          clickable
         />
-        <Chip sx={ MENU_STYLE } icon={<VpnLockIcon />} label="Public/Private Workspace" clickable
+        <Chip
+          sx={ MENU_STYLE }
+          icon={<VpnLockIcon />}
+          label={capitalizeFirstLetter(board?.type)}
+          clickable
         />
-        <Chip sx={ MENU_STYLE } icon={<AddToDriveIcon />} label="Add To Google Drive" clickable
+        <Chip
+          sx={ MENU_STYLE }
+          icon={<AddToDriveIcon />}
+          label="Add To Google Drive"
+          clickable
         />
-        <Chip sx={ MENU_STYLE } icon={<BoltIcon />} label="Automation" clickable
+        <Chip
+          sx={ MENU_STYLE }
+          icon={<BoltIcon />}
+          label="Automation"
+          clickable
         />
-        <Chip sx={ MENU_STYLE } icon={<FilterListIcon />} label="Filter" clickable
+        <Chip
+          sx={ MENU_STYLE }
+          icon={<FilterListIcon />}
+          label="Filter"
+          clickable
         />
       </Box>
       {/* right BoardBar */}

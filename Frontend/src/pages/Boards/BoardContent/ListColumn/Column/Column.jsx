@@ -21,15 +21,18 @@ import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 
+import { mapOrder } from '~/utils/sorts'
+
 // components
 import ListCards from './ListCards/ListCards'
 
 
-function Column() {
+function Column({ column }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
+  const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, '_id')
   return (
     <Box sx = {{
       minWidth: '300px',
@@ -53,7 +56,7 @@ function Column() {
           fontWeight: 'bold',
           cursor: 'pointer'
         }}>
-              Column Header
+          {column?.title}
         </Typography>
         <Box>
           <Tooltip title="More options">
@@ -105,7 +108,7 @@ function Column() {
         </Box>
       </Box>
       {/*========================== list card ==========================*/}
-      <ListCards />
+      <ListCards cards = { orderedCards }/>
       {/*========================== footer ==========================*/}
       <Box sx={{
         height: (theme) => theme.trello.columnFooterHeight,

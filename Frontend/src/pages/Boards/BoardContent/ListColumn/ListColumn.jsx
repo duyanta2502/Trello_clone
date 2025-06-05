@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 // components
 import Column from './Column/Column'
 
-function ListColumn() {
+function ListColumn({ columns }) {
   return (
     <Box sx={{
       bgcolor: 'inherit',
@@ -22,26 +22,7 @@ function ListColumn() {
         m: 2
       }
     }}>
-      {/* ========Box column 1 ======== */}
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      <Column />
-      {/* ========Add new column ======== */}
+      {columns?.map(column => <Column key={column._id} column={column} /> )}
       <Box sx={{
         minWidth: '200px',
         maxWidth: '200px',
