@@ -1,22 +1,23 @@
-import Box from '@mui/material/Box'
-import SvgIcon from '@mui/material/SvgIcon'
 import AppsIcon from '@mui/icons-material/Apps'
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import CloseIcon from '@mui/icons-material/Close'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd'
-import InputAdornment from '@mui/material/InputAdornment'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import SearchIcon from '@mui/icons-material/Search'
-import CloseIcon from '@mui/icons-material/Close'
+import { Badge, Button, TextField, Tooltip, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import InputAdornment from '@mui/material/InputAdornment'
+import SvgIcon from '@mui/material/SvgIcon'
 import { useState } from 'react'
-import { ReactComponent as trelloLogo } from '~/assets/mdi--trello.svg'
-import { Typography, Button, TextField, Badge, Tooltip } from '@mui/material'
 
+import { ReactComponent as trelloLogo } from '~/assets/mdi--trello.svg'
 import ModeSelect from '~/components/ModeSelect'
-import Workspaces from './Menus/Workspaces'
+
+import Profiles from './Menus/Profiles'
 import Recent from './Menus/Recent'
 import Started from './Menus/Started'
 import Template from './Menus/Template'
-import Profiles from './Menus/Profiles'
+import Workspaces from './Menus/Workspaces'
 
 function AppBar() {
   const [searchValue, setSearchValue] = useState('')
@@ -99,7 +100,7 @@ function AppBar() {
             }
           }}
         />
-        <Box sx={{ display: { xs:'none', md:'flex' }, alignItems: 'center', m: 1, gap: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <ModeSelect />
           <Tooltip
             title="Notifications"

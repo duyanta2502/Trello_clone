@@ -1,10 +1,13 @@
 import { experimental_extendTheme as extendTheme } from '@mui/material/styles'
 // import { cyan, orange, deepOrange, teal } from '@mui/material/colors'
-
+const APP_BAR_HEIGHT = 58
+const BOARD_BAR_HEIGHT = 60
+const BOARD_CONTENT_HEIGHT = `calc(100vh - ${APP_BAR_HEIGHT + BOARD_BAR_HEIGHT}px)`
 const theme = extendTheme({
   trello: {
-    appBarHeight: 60,
-    boardBarHeight: 60
+    appBarHeight: APP_BAR_HEIGHT,
+    boardBarHeight: BOARD_BAR_HEIGHT,
+    boardContentHeight: BOARD_CONTENT_HEIGHT
   },
   // Custom color schemes can be defined here
   colorSchemes: {
@@ -53,6 +56,17 @@ const theme = extendTheme({
         root: {
           // color: theme.palette.primary.main,
           fontSize: '0.875rem'
+        }
+      }
+    },
+    // FontSize for content board
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          // color: theme.palette.primary.main,
+          '&.MuiTypography-body1': {
+            fontSize: '0.875rem'
+          }
         }
       }
     },
