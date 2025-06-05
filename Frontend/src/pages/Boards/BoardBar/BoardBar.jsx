@@ -1,15 +1,15 @@
-import Box from '@mui/material/Box'
-import Chip from '@mui/material/Chip'
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import VpnLockIcon from '@mui/icons-material/VpnLock'
 import AddToDriveIcon from '@mui/icons-material/AddToDrive'
 import BoltIcon from '@mui/icons-material/Bolt'
+import DashboardIcon from '@mui/icons-material/Dashboard'
 import FilterListIcon from '@mui/icons-material/FilterList'
+import PersonAddIcon from '@mui/icons-material/PersonAdd'
+import VpnLockIcon from '@mui/icons-material/VpnLock'
+import { Tooltip } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import AvatarGroup from '@mui/material/AvatarGroup'
-import { Tooltip } from '@mui/material'
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import PersonAddIcon from '@mui/icons-material/PersonAdd'
+import Chip from '@mui/material/Chip'
 const MENU_STYLE = {
   color: 'white',
   bgcolor: 'transparent',
@@ -68,9 +68,13 @@ function BoardBar() {
               width: 30,
               height: 30,
               fontSize: 16,
-              border:'none'
+              border:'none',
+              color: 'white',
+              cursor: 'pointer',
+              '&:first-of-type': { bgcolor: '#a4b0de' }
             }
-          }}>
+          }}
+        >
           <Tooltip title="duyanta2502">
             <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
           </Tooltip>
