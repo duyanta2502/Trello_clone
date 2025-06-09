@@ -1,5 +1,5 @@
 // dnd-kit
-import { DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
+import { DndContext, MouseSensor, PointerSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
 // MUI - Components
 import Box from '@mui/material/Box'
@@ -13,15 +13,21 @@ import ListColumn from './ListColumn/ListColumn'
 
 
 function BoardContent({ board }) {
-  const poiterSensor = useSensor(PointerSensor, { activationConstraint: { distance: 10 } })
-  const sensors = useSensors(poiterSensor)
+
+  // docs: https://docs.dndkit.com/api-documentation/sensors
+  const pointerSensor = useSensor(PointerSensor, { activationConstraint: { distance: 10 } })
+  // ycau chuột di chuyển 10px mới kích hoạt event, fix lỗi click chuột
+  const mouseSensor = useSensor(MouseSensor, { activationConstraint: { distance: 10 } })
+  // nhấn giữ 250ms mới kích hoạt event, fix lỗi click chuột
+  // tolerace (dung sai): khoảng cách di chuyển tối đa cho phép trước khi kích hoạt sự kiện kéo thả
+  const touchSensor = useSensor(TouchSensor, { activationConstraint: { delay: 250, tolerace: 500 } })
+  const sensors = useSensors(pointerSensor, mouseSensor, touchSensor)
   const [orderesColums, setOrderesColums] = useState([])
   useEffect(() => {
     setOrderesColums(mapOrder(board?.columns, board?.columnOrderIds, '_id'))
   }, [board])
   // xử lí kéo thả data
   const handleDragEnd = (event) => {
-    console.log('Drag End Event:', event)
     const { active, over } = event
     // nếu không tồn tại trí kéo thả thì return
     if (!over) return
