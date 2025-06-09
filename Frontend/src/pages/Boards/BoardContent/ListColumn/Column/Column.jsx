@@ -34,6 +34,7 @@ function Column({ column }) {
     data:{ ...column }
   })
   const dndKitColumnStyles = {
+    touchAction: 'none',
     // nếu sử dụng CSS.Transform.toString giống docs thì sẽ bị lỗi kiểu stretch
     // github: https://github.com/clauderic/dnd-kit/issues/117
     transform: CSS.Translate.toString(transform),
