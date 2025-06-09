@@ -51,10 +51,10 @@ function Profiles() {
         }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar sx={{ width: 30, height: 30, mr: 1 }} src='https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp' /> Profile
+          <Avatar sx={{ width: 30, height: 30, mr: 1 }} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s' /> Profile
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Avatar sx={{ width: 30, height: 30, mr: 1 }} src='https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp' /> My account
+          <Avatar sx={{ width: 30, height: 30, mr: 1 }} src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s' /> My account
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
