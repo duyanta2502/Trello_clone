@@ -99,25 +99,25 @@ function BoardBar({ board }) {
           }}
         >
           <Tooltip title="duyanta2502">
-            <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
+            <Avatar alt="duyanta2502" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s" />
           </Tooltip>
           <Tooltip title="duyanta1">
-            <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
+            <Avatar alt="duyanta2502" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s" />
           </Tooltip>
           <Tooltip title="duyanta2">
-            <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
+            <Avatar alt="duyanta2502" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s" />
           </Tooltip>
           <Tooltip title="duyanta3">
-            <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
+            <Avatar alt="duyanta2502" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s" />
           </Tooltip>
           <Tooltip title="duyanta4">
-            <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
+            <Avatar alt="duyanta2502" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s" />
           </Tooltip>
           <Tooltip title="duyanta5">
-            <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
+            <Avatar alt="duyanta2502" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s" />
           </Tooltip>
           <Tooltip title="duyanta6">
-            <Avatar alt="duyanta2502" src="https://cdn.donmai.us/720x720/c4/ff/c4ffab6a2ac05f28c76333f35f56ceae.webp" />
+            <Avatar alt="duyanta2502" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxB716-dw_wfpYQGINX_DM6YLOpPMyRv9hLQ&s" />
           </Tooltip>
         </AvatarGroup>
       </Box>
