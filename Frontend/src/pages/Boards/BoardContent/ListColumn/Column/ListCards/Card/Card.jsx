@@ -24,9 +24,8 @@ function Card({ card }) {
     // github: https://github.com/clauderic/dnd-kit/issues/117
     transform: CSS.Translate.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : undefined
-    // borderRadius: isDragging? '6px' : undefined,
-    // border: isDragging ? '2px solid #007bff' : undefined
+    opacity: isDragging ? 0.5 : undefined,
+    border: isDragging ? '2px solid #2ecc71' : undefined
   }
   const shouldShowCard = () => {
     return !!card?.memberIds?.length ||
