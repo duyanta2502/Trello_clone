@@ -41,7 +41,6 @@ function Column({ column }) {
     // youtube: 11:00 https://www.youtube.com/watch?v=bD26jjX0cHk&list=PLP6tw4Zpj-RJP2-YrhtkWqObMQ-AA4TDy&index=36
     height: '100%',
     opacity: isDragging ? 0.5 : undefined
-    // borderRadius: isDragging? '6px' : undefined,
     // border: isDragging ? '2px solid #007bff' : undefined
   }
   const [anchorEl, setAnchorEl] = useState(null)
