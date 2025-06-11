@@ -1,6 +1,6 @@
 // dnd-kit
 import {
-  closestCenter,
+  // closestCenter,
   closestCorners,
   defaultDropAnimationSideEffects,
   DndContext,
@@ -9,7 +9,7 @@ import {
   MouseSensor,
   PointerSensor,
   pointerWithin,
-  rectIntersection,
+  // rectIntersection,
   TouchSensor,
   useSensor,
   useSensors } from '@dnd-kit/core'
@@ -267,18 +267,26 @@ function BoardContent({ board }) {
     if (activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.COLUMN) {
       return closestCorners({ ...args })
     }
+    // Tìm các điểm giao, va chạm giữa. trả về một mảng các va chạm - intersetions với con trỏ
     const pointerIntersection = pointerWithin({ ...args })
-    const intersection = !!pointerIntersection?.length ?
-      pointerIntersection
-      :
-      rectIntersection({ ...args })
+
+    // Nếu không có điểm va chạm nào thì return (pointerIntersection là mảng rỗng), tránh flickering
+    if (!pointerIntersection?.length) return
+
+    // Thuật toán phát hiện va chạm sẽ trả về mảng các va chạm ở đây (ko cần bước này nữa)
+    // const intersection = !!pointerIntersection?.length ?
+    //   pointerIntersection
+    //   :
+    //   rectIntersection({ ...args })
+
     // Tim ra phần tử đầu tiên trong mảng intersection
-    let overId = getFirstCollision(intersection, 'id')
+    let overId = getFirstCollision(pointerIntersection, 'id')
     if (overId) {
       const checkColumn = orderesColums.find(column => column._id === overId)
       if (checkColumn) {
         // console.log('overId before:', overId)
-        overId = closestCenter({
+        // Có closestCorners và closestCenter, thấy dùng closestCorners mượt hơn
+        overId = closestCorners({
           ...args,
           droppableContainers: args.droppableContainers.filter(container => {
             return (container.id !== overId) && (checkColumn?.cardOrderIds?.includes(container.id))
