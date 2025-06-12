@@ -1,5 +1,3 @@
-// Updated by trungquandev.com's author on May 13 2023
-// Sample Eslint config for React project
 module.exports = {
   env: { es2020: true, node: true },
   extends: [ 'eslint:recommended' ],
