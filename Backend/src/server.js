@@ -5,10 +5,14 @@ import express from 'express'
 import { mapOrder } from '~/utils/sorts.js'
 import exitHook from 'async-exit-hook'
 import { env } from '~/config/environment'
+import { APIs_V1 } from '~/routes/v1'
+
 const START_SERVER = () => {
   const app = express()
+  app.use(express.json())
+  app.use('/v1', APIs_V1)
 
-  app.get('/', async(req, res) => {
+  app.get('/', (req, res) => {
     // console.log(GET_DB().databaseName)
     console.log(process.env)
     res.end('<h1> hello world <h1/>')
