@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container'
 import { useEffect, useState } from 'react'
 
-import { mockData } from '~/apis/mock-data'
+// import { mockData } from '~/apis/mock-data'
 import AppBar from '~/components/AppBar/AppBar'
 
 import BoardBar from './BoardBar/BoardBar'
