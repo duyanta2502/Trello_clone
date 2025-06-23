@@ -34,8 +34,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 0,
     'react/display-name': 0,
-    'simple-import-sort/imports': 'warn',
-    'simple-import-sort/exports': 'warn',
+    // 'simple-import-sort/imports': 'warn',
+    // 'simple-import-sort/exports': 'warn',
 
     //MUI
     'no-restricted-imports': [
