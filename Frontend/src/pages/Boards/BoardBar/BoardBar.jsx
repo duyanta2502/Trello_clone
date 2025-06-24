@@ -10,7 +10,6 @@ import AvatarGroup from '@mui/material/AvatarGroup'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
-
 import { capitalizeFirstLetter } from '~/utils/formatters'
 
 const MENU_STYLE = {
@@ -42,12 +41,14 @@ function BoardBar({ board }) {
     }}>
       {/* left BoardBar */}
       <Box sx = {{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-        <Chip
-          sx={ MENU_STYLE }
-          icon={<DashboardIcon />}
-          label={board?.title}
-          clickable
-        />
+        <Tooltip title={board?.description}>
+          <Chip
+            sx={ MENU_STYLE }
+            icon={<DashboardIcon />}
+            label={board?.title}
+            clickable
+          />
+        </Tooltip>
         <Chip
           sx={ MENU_STYLE }
           icon={<VpnLockIcon />}
