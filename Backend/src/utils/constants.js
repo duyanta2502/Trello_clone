@@ -4,3 +4,7 @@ export const WHITELIST_DOMAINS = [
   // ...
   // deploy lên domain chính thức
 ]
+export const BOARD_TYPE = {
+  PUBLIC: 'public',
+  PRIVATE: 'private'
+}

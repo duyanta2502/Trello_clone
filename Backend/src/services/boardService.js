@@ -3,6 +3,8 @@ import { slugify } from '~/utils/formaters'
 import { boardModel } from '~/models/boardModel'
 import ApiError from '~/utils/ApiError'
 import { StatusCodes } from 'http-status-codes'
+import { cloneDeep } from 'lodash'
+
 const CreateNew = async (reqBody) => {
   try {
     // xử lí logic dữ liệu tùy theo yêu cầu
@@ -28,18 +30,28 @@ const CreateNew = async (reqBody) => {
   }
 }
 
-const getDetail = async (boardId) => {
+const getDetails = async (boardId) => {
   try {
-    const board = await boardModel.getDetail(boardId)
+    const board = await boardModel.getDetails(boardId)
     if (!board) {
       throw new ApiError(StatusCodes.NOT_FOUND, 'Board not found')
     }
-    return board
+    // Deep clone board ra một cái mới để xử lí, ko ảnh hưởng đến board ban đầu, tùy mục đích sử dụng về sau mà có cần clonedeep hay không
+    const resBoard = cloneDeep(board)
+    // đưa card về đúng column của nó
+    resBoard.columns.forEach((column) => {
+      // console.log(column.cardOrderIds)
+      // console.log('column.cards', column.cards)
+      // column.cards = resBoard.cards.filter(card => card?.columnId?.equals(column._id))
+      column.cards = resBoard.cards.filter(card => card.columnId.toString() === column._id.toString())
+    })
+    delete resBoard.cards // xóa đi cards vì đã đưa về đúng column của nó rồi
+    return resBoard
   } catch (error) {
     throw error
   }
 }
 export const BoardService = {
   CreateNew,
-  getDetail
+  getDetails
 }
