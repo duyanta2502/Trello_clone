@@ -65,7 +65,7 @@ const getDetails = async (id) => {
       } }
     ]).toArray()
     // console.log('result', result)
-    return result[0] || {}
+    return result[0] || null
   } catch (error) { throw new Error(error) }
 }
 
@@ -76,5 +76,3 @@ export const boardModel = {
   findOneById,
   getDetails
 }
-// boardId: 6858f4b430e1b68de1b877cb
-// columnId: 6858fc54e428bdc80ee41e6c
