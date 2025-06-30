@@ -22,7 +22,8 @@ function ModeSelect() {
           '&.Mui-focused': { color: 'white' }
         }}
         id="label-select-dark-light-mode">
-        Mode</InputLabel>
+        Mode
+      </InputLabel>
       <Select
         sx={{
           color: 'white',

@@ -7,6 +7,7 @@ import { cloneDeep } from 'lodash'
 
 const CreateNew = async (reqBody) => {
   try {
+    
     // xử lí logic dữ liệu tùy theo yêu cầu
     const newBoard = {
       ...reqBody,
@@ -48,6 +49,7 @@ const getDetails = async (boardId) => {
     delete resBoard.cards // xóa đi cards vì đã đưa về đúng column của nó rồi
     return resBoard
   } catch (error) {
+    // console.log(error)
     throw error
   }
 }
