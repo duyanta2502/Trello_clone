@@ -2,6 +2,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { Button, TextField } from '@mui/material'
 import Box from '@mui/material/Box'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 import { horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable'
 import NoteAddIcon from '@mui/icons-material/NoteAdd'
 import Column from './Column/Column'
@@ -13,12 +14,12 @@ function ListColumn({ columns }) {
 
   const addNewColumn = () => {
     if (!newColumnTitle) {
-      // console.log('Column title cannot be empty')
+      toast.error('Column title cannot be empty')
       return
     }
     // console.log(newColumnTitle)
     // gọi API để thêm cột mới ở đây
-
+    toast.success(`New column "${newColumnTitle}" added successfully`, { position: 'bottom-left' })
     toggleOpenNewColumnForm() // đóng form sau khi thêm cột
     setNewColumnTitle('') // reset giá trị input
   }
