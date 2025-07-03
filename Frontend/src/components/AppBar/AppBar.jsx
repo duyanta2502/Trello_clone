@@ -65,6 +65,7 @@ function AppBar() {
       </Box>
       {/*===== right AppBar =====*/}
       <Box sx = {{ display: 'flex', alignItems: 'center', gap: 2, m: 1 }}>
+        {/* ---------------- search field ---------------- */}
         <TextField
           id="outlined-search"
           label="Search..."
@@ -100,6 +101,7 @@ function AppBar() {
             }
           }}
         />
+        {/* ---------------- mode select ---------------- */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <ModeSelect />
           <Tooltip

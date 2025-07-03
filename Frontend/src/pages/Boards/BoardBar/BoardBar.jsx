@@ -11,7 +11,6 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import { capitalizeFirstLetter } from '~/utils/formatters'
-
 const MENU_STYLE = {
   color: 'white',
   bgcolor: 'transparent',
@@ -75,14 +74,19 @@ function BoardBar({ board }) {
         />
       </Box>
       {/* right BoardBar */}
+      {/* Box lỗi Hover, cụ thể lỗi ở button */}
+      {/* fix tạm trong theme */}
       <Box sx = {{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Button
           variant="outlined"
           startIcon = { <PersonAddIcon/> }
           sx = {{
+            boxShadow: 0,
             color: 'white',
             borderColor: 'white',
-            '&:hover': { borderColor: 'white' }
+            '&:hover': {
+              borderColor: 'white'
+            }
           }}> Invite
         </Button>
         <AvatarGroup max={5}

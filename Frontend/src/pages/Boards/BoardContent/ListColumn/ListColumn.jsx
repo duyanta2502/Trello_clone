@@ -1,8 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close'
-import SearchIcon from '@mui/icons-material/Search'
 import { Button, TextField } from '@mui/material'
 import Box from '@mui/material/Box'
-import InputAdornment from '@mui/material/InputAdornment'
 import { useState } from 'react'
 import { horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable'
 import NoteAddIcon from '@mui/icons-material/NoteAdd'
@@ -11,6 +9,19 @@ function ListColumn({ columns }) {
   const [openNewColumnForm, setOpenNewColumnForm] = useState(false)
   const toggleOpenNewColumnForm = () => setOpenNewColumnForm(!openNewColumnForm)
 
+  const [newColumnTitle, setNewColumnTitle] = useState('')
+
+  const addNewColumn = () => {
+    if (!newColumnTitle) {
+      // console.log('Column title cannot be empty')
+      return
+    }
+    // console.log(newColumnTitle)
+    // gọi API để thêm cột mới ở đây
+
+    toggleOpenNewColumnForm() // đóng form sau khi thêm cột
+    setNewColumnTitle('') // reset giá trị input
+  }
 
   // thằng sort tableContext yêu cầu items là một arr, ko phải object với các cặp key:value
   // nếu ko đúng vẫn kéo thả được, nhưng k có animation
@@ -71,8 +82,8 @@ function ListColumn({ columns }) {
               size='small'
               variant='outlined'
               autoFocus
-              // value={searchValue}
-              // onChange={(e) => setSearchValue(e.target.value)}
+              value={newColumnTitle}
+              onChange={(e) => setNewColumnTitle(e.target.value)}
               sx={{
                 '& input': { color: 'white' },
                 '& label': { color: 'white' },
@@ -84,24 +95,27 @@ function ListColumn({ columns }) {
                 }
               }}
             />
-            <Box sx={{
-              display: 'flex',
-              alignItems: 'center',
-            }}>
-              <Button variant='contained' color='success' size='small'
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Button
+                onClick={addNewColumn}
+                variant='contained' color='success' size='small'
                 sx={{
                   boxShadow: 'none',
                   border: '0.5px solid',
-                  borderColor: { bgcolor: (theme) => theme.palette.success.main },
-                  // '&:hover': { bgcolor: (theme) => theme.palette.success.light }
+                  borderColor: (theme) => theme.palette.success.main,
+                  '&:hover': { bgcolor: (theme) => theme.palette.success.light }
                 }}
                 startIcon={<NoteAddIcon />}
-                // onClick={handleAddColumn}
-              >Add Column</Button>
+              > Add Column </Button>
               <CloseIcon
                 fontSize='small'
-                sx={{ color: 'white', cursor: 'pointer' }}
-                onClick={toggleOpenNewColumnForm} />
+                sx={{
+                  color: 'white',
+                  cursor: 'pointer',
+                  '&:hover': { color: (theme) => theme.palette.error.main }
+                }}
+                onClick={toggleOpenNewColumnForm}
+              />
             </Box>
           </Box>
         }
