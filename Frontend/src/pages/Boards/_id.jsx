@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container'
 import { useEffect, useState } from 'react'
 
-import { mockData } from '~/apis/mock-data'
+// import { mockData } from '~/apis/mock-data'
 import AppBar from '~/components/AppBar/AppBar'
 
 import BoardBar from './BoardBar/BoardBar'
@@ -22,8 +22,8 @@ function Board() {
     // , backgroundColor: 'primary.main'
     <Container disableGutters maxWidth = {false} sx ={{ height: '100vh' }}>
       <AppBar />
-      <BoardBar board = {mockData.board}/>
-      <BoardContent board = {mockData.board}/>
+      <BoardBar board = {board}/>
+      <BoardContent board = {board}/>
     </Container>
   )
 }

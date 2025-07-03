@@ -22,7 +22,7 @@ import ListCards from './ListCards/ListCards'
 import CloseIcon from '@mui/icons-material/Close'
 import { Button, TextField } from '@mui/material'
 import NoteAddIcon from '@mui/icons-material/NoteAdd'
-
+import { toast } from 'react-toastify'
 function Column({ column }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: column._id,
@@ -55,12 +55,12 @@ function Column({ column }) {
 
   const addNewCard = () => {
     if (!newCardTitle) {
-      // console.log('Card title cannot be empty')
+      toast.error('Card title cannot be empty', { position: 'bottom-right' })
       return
     }
     // console.log(newCardTitle)
     // gọi API để thêm cột mới ở đây
-
+    toast.success(`New card "${newCardTitle}" added successfully`, { position: 'bottom-right' })
     toggleOpenNewCardForm() // đóng form sau khi thêm cột
     setNewCardTitle('') // reset giá trị input
   }
