@@ -7,7 +7,7 @@ import AppBar from '~/components/AppBar/AppBar'
 import BoardBar from './BoardBar/BoardBar'
 import BoardContent from './BoardContent/BoardContent'
 import { fetchBoardDetailsAPI } from '~/apis'
-
+// import { mockData } from '~/apis/mock-data'
 function Board() {
   const [board, setBoard] = useState(null)
   useEffect(() => {
