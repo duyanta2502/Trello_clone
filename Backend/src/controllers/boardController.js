@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes'
-import { BoardService } from '~/services/boardService'
+import { boardService } from '~/services/boardService'
 const createNew = async (req, res, next) => {
   try {
     // console.log('req.body', req.body)
@@ -10,7 +10,7 @@ const createNew = async (req, res, next) => {
     // console.log('req.jwtdecoded', req.JWTdecoded)
 
     // Điều hướng đến service để xử lý logic
-    const createdBoard = await BoardService.CreateNew(req.body)
+    const createdBoard = await boardService.CreateNew(req.body)
     // Có kết quả thì trả về client
     res.status(StatusCodes.CREATED).json(createdBoard)
   } catch (error) { next(error) }
@@ -19,7 +19,11 @@ const createNew = async (req, res, next) => {
 const getDetail = async (req, res, next) => {
   try {
     const boardId = req.params.id
+<<<<<<< Updated upstream
     const board = await BoardService.getDetail(boardId)
+=======
+    const board = await boardService.getDetails(boardId)
+>>>>>>> Stashed changes
     res.status(StatusCodes.OK).json(board)
   } catch (error) { next(error) }
 }

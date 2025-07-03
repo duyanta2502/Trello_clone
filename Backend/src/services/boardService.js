@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-catch */
 import { slugify } from '~/utils/formaters'
 import { boardModel } from '~/models/boardModel'
 import ApiError from '~/utils/ApiError'
@@ -39,7 +38,7 @@ const getDetail = async (boardId) => {
     throw error
   }
 }
-export const BoardService = {
+export const boardService = {
   CreateNew,
   getDetail
 }
