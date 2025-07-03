@@ -9,7 +9,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import DragHandleIcon from '@mui/icons-material/DragHandle'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
@@ -18,12 +17,12 @@ import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
-
 import { mapOrder } from '~/utils/sorts'
-
 import ListCards from './ListCards/ListCards'
-
-
+import CloseIcon from '@mui/icons-material/Close'
+import { Button, TextField } from '@mui/material'
+import NoteAddIcon from '@mui/icons-material/NoteAdd'
+import { toast } from 'react-toastify'
 function Column({ column }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: column._id,
@@ -48,6 +47,23 @@ function Column({ column }) {
   const handleClick = (event) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
   const orderedCards = mapOrder(column?.cards, column?.cardOrderIds, '_id')
+
+  const [openNewCardForm, setOpenNewCardForm] = useState(false)
+  const toggleOpenNewCardForm = () => setOpenNewCardForm(!openNewCardForm)
+
+  const [newCardTitle, setNewCardTitle] = useState('')
+
+  const addNewCard = () => {
+    if (!newCardTitle) {
+      toast.error('Card title cannot be empty', { position: 'bottom-right' })
+      return
+    }
+    // console.log(newCardTitle)
+    // gọi API để thêm cột mới ở đây
+    toast.success(`New card "${newCardTitle}" added successfully`, { position: 'bottom-right' })
+    toggleOpenNewCardForm() // đóng form sau khi thêm cột
+    setNewCardTitle('') // reset giá trị input
+  }
   return (
     <div ref={setNodeRef} style = {dndKitColumnStyles}{...attributes}>
       <Box
@@ -130,15 +146,77 @@ function Column({ column }) {
         {/*========================== footer ==========================*/}
         <Box sx={{
           height: (theme) => theme.trello.columnFooterHeight,
-          p: 2,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
+          p: 2
         }}>
-          <Button startIcon = { <AddCardIcon />}> Add new card</Button>
-          <Tooltip title="Drag to move">
-            <DragHandleIcon sx = {{ cursor: 'pointer' }} />
-          </Tooltip>
+          { !openNewCardForm ?
+            <Box sx={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}>
+              <Button startIcon = { <AddCardIcon />} onClick={toggleOpenNewCardForm}> Add new card</Button>
+              <Tooltip title="Drag to move">
+                <DragHandleIcon sx = {{ cursor: 'pointer' }} />
+              </Tooltip>
+            </Box>
+            :
+            <Box sx={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1
+            }}>
+              <TextField
+                label="Enter card title..."
+                type="text"
+                size='small'
+                variant='outlined'
+                autoFocus
+                value={newCardTitle}
+                onChange={(e) => setNewCardTitle(e.target.value)}
+                sx={{
+                  '& label': { color: 'text.primary' },
+                  '& input': {
+                    color: (theme) => theme.palette.text.primary,
+                    bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : 'white')
+                  },
+                  '& label.Mui-focused': { color: (theme) => (theme.palette.mode === 'dark' ? 'white' : '#1976d2') },
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': { borderColor:  (theme) => (theme.palette.mode === 'dark' ? 'white' : '#1976d2') },
+                    '&:hover fieldset': { borderColor:  (theme) => (theme.palette.mode === 'dark' ? 'white' : '#1976d2') },
+                    '&.Mui-focused fieldset': { borderColor:  (theme) => (theme.palette.mode === 'dark' ? 'white' : '#1976d2') }
+                  },
+                  '& .MuiOutlinedInput-input': {
+                    borderRadius: 1
+                  }
+                }}
+              />
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Button
+                  onClick={addNewCard}
+                  variant='contained' color='success' size='small'
+                  sx={{
+                    height: '100%',
+                    boxShadow: 'none',
+                    border: '0.5px solid',
+                    borderColor: (theme) => theme.palette.success.dark,
+                    '&:hover': { bgcolor: (theme) => theme.palette.success.light }
+                  }}
+                  startIcon={<NoteAddIcon />}
+                > Add </Button>
+                <CloseIcon
+                  fontSize='small'
+                  sx={{
+                    color: 'white',
+                    cursor: 'pointer',
+                    '&:hover': { color: (theme) => theme.palette.error.main }
+                  }}
+                  onClick={toggleOpenNewCardForm}
+                />
+              </Box>
+            </Box>
+          }
         </Box>
       </Box>
     </div>

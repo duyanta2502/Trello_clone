@@ -11,7 +11,7 @@ export const errorHandlingMiddleware = (err, req, res, next) => {
     stack: err.stack
   }
   // production mode không trả về stack trace
-  console.log(env.BUILD_MODE)
+  // console.log(env.BUILD_MODE)
   if (env.BUILD_MODE !== 'dev') delete responseError.stack
   res.status(responseError.statusCode).json(responseError)
 }

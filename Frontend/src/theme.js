@@ -49,9 +49,10 @@ const theme = extendTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          // fix tạm cho nó, tắt luôn cho đỡ bug
           textTransform: 'none',
           borderWidth: '0.8px',
-          '&:hover': { borderWidth: '1.6px' }
+          '&:hover': { borderWidth: '0.8px' }
         }
       }
     },
@@ -67,28 +68,35 @@ const theme = extendTheme({
     MuiTypography: {
       styleOverrides: {
         root: {
-          // color: theme.palette.primary.main,
           '&.MuiTypography-body1': {
             fontSize: '0.875rem'
           }
         }
       }
     },
+    // theme TextField
     MuiOutlinedInput:{
       styleOverrides:{
         root: {
-          // color: theme.palette.primary.main,
-          // '.MuiOutlinedInput-notchedOutline': {
-          //   borderColor: theme.palette.primary.light
-          // },
-          // '&:hover .MuiOutlinedInput-notchedOutline': {
-          //   borderColor: theme.palette.primary.main
-          // },
           fontSize: '0.875rem',
           '& fieldset': { borderWidth: '0.8px !important' },
           '&:hover fieldset': { borderWidth: '1.6px !important' },
           '&.Mui-focused fieldset': { borderWidth: '1.6px !important' }
         }
+      }
+    },
+    // theme Card
+    MuiCard:{
+      styleOverrides:{
+        root: ({ theme }) => ({
+          // border: '0.8px solid transparent',
+          borderWidth: '0.8px',
+          borderStyle: 'solid',
+          borderColor: 'transparent',
+          '&:hover': {
+            borderColor: theme.palette.mode === 'dark' ? 'white' : '#1976d2'
+          }
+        })
       }
     }
   }
