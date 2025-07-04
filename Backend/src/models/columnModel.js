@@ -24,7 +24,10 @@ const validateBeforeCreate = async (data) => {
 const createNew = async (data) => {
   try {
     const validData = await validateBeforeCreate(data)
-    return await GET_DB().collection(COLUMN_COLLECTION_NAME).insertOne(validData)
+    return await GET_DB().collection(COLUMN_COLLECTION_NAME).insertOne({
+      ...validData,
+      boardId: new ObjectId(validData.boardId) // Chuyển đổi boardId sang ObjectId
+    })
   } catch (error) { throw new Error(error) }
 }
 
@@ -35,10 +38,22 @@ const findOneById = async (id) => {
     })
   } catch (error) { throw new Error(error) }
 }
-
+// push giá trị cardId vào cuối mảng cardOrderIds trong collection column
+const pushCardOrderIds = async (card) => {
+  try {
+    return await GET_DB().collection(COLUMN_COLLECTION_NAME).findOneAndUpdate(
+      { _id: new ObjectId(card.columnId) },
+      { $push: { cardOrderIds: new ObjectId(card._id) } },
+      { returnDocument: 'after' }
+    ).value
+  } catch (error) {
+    throw new Error(error)
+  }
+}
 export const columnModel = {
   COLUMN_COLLECTION_NAME,
   COLUMN_COLLECTION_SCHEMA,
   createNew,
-  findOneById
+  findOneById,
+  pushCardOrderIds
 }

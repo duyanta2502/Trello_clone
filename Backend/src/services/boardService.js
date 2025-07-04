@@ -6,7 +6,6 @@ import { cloneDeep } from 'lodash'
 
 const CreateNew = async (reqBody) => {
   try {
-    
     // xử lí logic dữ liệu tùy theo yêu cầu
     const newBoard = {
       ...reqBody,
