@@ -6,19 +6,23 @@ import { toast } from 'react-toastify'
 import { horizontalListSortingStrategy, SortableContext } from '@dnd-kit/sortable'
 import NoteAddIcon from '@mui/icons-material/NoteAdd'
 import Column from './Column/Column'
-function ListColumn({ columns }) {
+function ListColumn({ columns, createNewColumn, createNewCard }) {
   const [openNewColumnForm, setOpenNewColumnForm] = useState(false)
   const toggleOpenNewColumnForm = () => setOpenNewColumnForm(!openNewColumnForm)
 
   const [newColumnTitle, setNewColumnTitle] = useState('')
 
-  const addNewColumn = () => {
+  const addNewColumn = async() => {
     if (!newColumnTitle) {
       toast.error('Column title cannot be empty')
       return
     }
-    // console.log(newColumnTitle)
-    // gọi API để thêm cột mới ở đây
+    // Tạo dữ liệu column gọi API để thêm cột mới
+    const newColumnData = {
+      title: newColumnTitle
+    }
+    await createNewColumn(newColumnData) // gọi hàm createNewColumn từ props(_id.jsx) để thực hiện API
+
     toast.success(`New column "${newColumnTitle}" added successfully`, { position: 'bottom-left' })
     toggleOpenNewColumnForm() // đóng form sau khi thêm cột
     setNewColumnTitle('') // reset giá trị input
@@ -42,7 +46,7 @@ function ListColumn({ columns }) {
           m: 2
         }
       }}>
-        {columns?.map(column => <Column key={column._id} column={column} /> )}
+        {columns?.map(column => <Column key={column._id} column={column} createNewCard={createNewCard} /> )}
         {!openNewColumnForm
           ? <Box onClick = {toggleOpenNewColumnForm} sx={{
             minWidth: '250px',

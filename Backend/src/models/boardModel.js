@@ -24,6 +24,7 @@ const BOARD_COLLECTION_SCHEMA = Joi.object({
 const validateBeforeCreate = async (data) => {
   return await BOARD_COLLECTION_SCHEMA.validateAsync(data, { abortEarly: false })
 }
+
 const createNew = async (data) => {
   try {
     const validData = await validateBeforeCreate(data)
@@ -39,6 +40,7 @@ const findOneById = async (id) => {
   } catch (error) { throw new Error(error) }
 }
 
+// querry tổng hợp (aggregate) để lấy toàn bộ dữ liệu của board
 const getDetails = async (id) => {
   try {
     // aggregation pipeline
@@ -69,10 +71,23 @@ const getDetails = async (id) => {
   } catch (error) { throw new Error(error) }
 }
 
+// push giá trị columnId vào cuối mảng columnOrderIds trong collection board
+const pushColumnOrderIds = async (column) => {
+  try {
+    return await GET_DB().collection(BOARD_COLLECTION_NAME).findOneAndUpdate(
+      { _id: new ObjectId(column.boardId) },
+      { $push: { columnOrderIds: new ObjectId(column._id) } },
+      { returnDocument: 'after' }
+    ).value|| null
+  } catch (error) {
+    throw new Error(error)
+  }
+}
 export const boardModel = {
   BOARD_COLLECTION_NAME,
   BOARD_COLLECTION_SCHEMA,
   createNew,
   findOneById,
-  getDetails
+  getDetails,
+  pushColumnOrderIds
 }
